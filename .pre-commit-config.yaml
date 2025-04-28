@@ -18,7 +18,8 @@ repos:
 
   # Jupyter notebook linting using jupytext
   - repo: https://github.com/mwouts/jupytext
-    rev: v1.14.0  # Make sure to choose a stable version
+    # rev: v1.14.0  # Make sure to choose a stable version
+    rev: v1.17.1 
     hooks:
     - id: jupytext
       files: \.ipynb$  # Only lint .ipynb files
