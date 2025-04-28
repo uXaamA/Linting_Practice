@@ -16,13 +16,24 @@ repos:
       - id: debug-statements         # check for python debug statements (import pdb, breakpoint, etc.)
       - id: detect-private-key       # checks for private keys (BEGIN X PRIVATE KEY, etc.)
 
-  # Jupyter notebook linting using jupytext
-  - repo: https://github.com/mwouts/jupytext
-    # rev: v1.14.0  # Make sure to choose a stable version
-    rev: v1.17.1 
+  # ADD this section INSTEAD:
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.7.1 # Use the latest stable version of nbqa
     hooks:
-    - id: jupytext
-      files: \.ipynb$  # Only lint .ipynb files
+    - id: nbqa-black
+      files: \.ipynb$
+      args: [--line-length=120] # Pass args if needed, matching your black config
+    - id: nbqa-flake8
+      files: \.ipynb$
+      args: [--config=.flake8] # Tell it to use your flake8 config
+  
+
+  # # Jupyter notebook linting using jupytext
+  # - repo: https://github.com/mwouts/jupytext
+  #   # rev: v1.14.0  # Make sure to choose a stable version
+  #   hooks:
+  #   - id: jupytext
+  #     files: \.ipynb$  # Only lint .ipynb files
 
   
   # black python autoformatting
